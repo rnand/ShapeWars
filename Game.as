@@ -1,4 +1,4 @@
-﻿package Game
+﻿package 
 {
 
 	import flash.display.MovieClip;
