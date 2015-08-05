@@ -13,10 +13,14 @@
 
 		//common
 		public var timer:Timer = new Timer(28);
+		public var score:int;
 
 		//assets
 		public var buttonstart:ButtonStart;
 		public var gametitle:Title;
+		public var hero:Hero;
+		public var scorebox:ScoreBox;
+		
 
 
 		//variables
@@ -52,7 +56,16 @@
 
 		public function SetUp()
 		{
-			//setup
+			hero=new Hero;
+			addChild(hero);
+			hero.x=400;
+			hero.y=500;
+			hero.dead=false;
+			score=0;
+			scorebox=new ScoreBox;
+			addChild(scorebox);
+			scorebox.x=25;
+			scorebox.y=12;
 		}
 
 		public function onTimer(evt:TimerEvent):void
