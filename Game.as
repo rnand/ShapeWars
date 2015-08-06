@@ -24,6 +24,9 @@
 
 
 		//variables
+		public var Right:Boolean;
+		public var Left:Boolean;
+		public var Space:Boolean;
 
 		//arrays
 
@@ -66,6 +69,32 @@
 			addChild(scorebox);
 			scorebox.x=25;
 			scorebox.y=12;
+			stage.addEventListener(KeyboardEvent.KEY_DOWN,KeyDownHandler);
+			stage.addEventListener(KeyboardEvent.KEY_UP,KeyUpHandler);
+		}
+		
+		public function KeyDownHandler(e:KeyboardEvent){
+			trace(e.keyCode);
+			if(e.keyCode==39){
+				Right=true;
+			}
+			if(e.keyCode==37){
+				Left=true;
+			}
+			
+		}
+		
+		public function KeyUpHandler(e:KeyboardEvent){
+			trace(e.keyCode);
+			if(e.keyCode==39){
+				Right=false;
+			}
+			if(e.keyCode==37){
+				Left=false;
+			}
+			if(e.keyCode==32){
+				Space=true;
+			}
 		}
 
 		public function onTimer(evt:TimerEvent):void
