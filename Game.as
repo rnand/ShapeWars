@@ -15,6 +15,8 @@
 		public var timer:Timer = new Timer(28);
 		public var score:int;
 		public var rnd1:int;
+		public var i:int;
+		public var ii:int;
 
 		//assets
 		public var buttonstart:ButtonStart;
@@ -133,6 +135,9 @@
 		}
 		public function MoveObjects()
 		{
+			for(i=0;i<EnemyArray.length;i++){
+				EnemyArray[i].action();
+			}
 		}
 		public function CollisionDetection()
 		{
