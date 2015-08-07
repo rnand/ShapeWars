@@ -179,27 +179,44 @@
 		public function CollisionDetection()
 		{
 			for(i=0;i<EnemyArray.length;i++){
-				if (EnemyArray[i].hitTestObject(hero))
-				{
+				if (EnemyArray[i].hitTestObject(hero)){
 					hero.dead = true;
 				}
 				for(ii=0;ii<BulletArray.length;ii++){
-					if (EnemyArray[i].hitTestObject(BulletArray[ii]))
-					{
+					if (EnemyArray[i].hitTestObject(BulletArray[ii])){
 						EnemyArray[i].dead = true;
 						BulletArray[ii].dead = true;
 						score +=  5;
 					}
 				}
 			}
-		
+
 		}
-	
+
+
+
+
 
 		public function RemoveDeadObjects()
 		{
-	
+			for(i=0;i<BulletArray.length;i++){
+				if (BulletArray[i].dead || BulletArray.y < 0){
+					removeChild(BulletArray[i]);
+					BulletArray[i] = null;
+					BulletArray.splice(i,1);
+				}
+				
+			}
+			for(i=0;i<EnemyArray.length;i++){
+				removeChild(EnemyArray[i]);
+				EnemyArray[i] = null;
+				EnemyArray.splice(i,1);
+			}
+
 		}
+
+
+
 
 		public function UpdateDisplay()
 		{
