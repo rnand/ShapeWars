@@ -22,7 +22,8 @@
 			}
 			
 		}
-		public function action():void{
+		public function action(){
+			//trace("action");
 			this.y+=yspeed;
 			if(mydirection=="right"){
 				this.x+=xspeed;
