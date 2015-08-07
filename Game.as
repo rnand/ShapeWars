@@ -24,6 +24,7 @@
 		public var hero:Hero;
 		public var scorebox:ScoreBox;
 		public var enemy1:Enemy1;
+		public var bullet:Bullet;
 
 
 		//variables
@@ -103,6 +104,16 @@
 			if(e.keyCode==32){
 				Space=true;
 			}
+		}
+		
+		public function Shoot(){
+			Space=false;
+			bullet=new Bullet;
+			addChild(bullet);
+			bullet.x=hero.x;
+			bullet.y=hero.y;
+			bullet.dead=false;
+			BulletArray.push(bullet);
 		}
 
 		public function onTimer(evt:TimerEvent):void
