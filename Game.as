@@ -65,54 +65,62 @@
 
 		public function SetUp()
 		{
-			hero=new Hero;
+			hero = new Hero  ;
 			addChild(hero);
-			hero.x=400;
-			hero.y=500;
-			hero.dead=false;
-			score=0;
-			scorebox=new ScoreBox;
+			hero.x = 400;
+			hero.y = 500;
+			hero.dead = false;
+			score = 0;
+			scorebox = new ScoreBox  ;
 			addChild(scorebox);
-			scorebox.x=25;
-			scorebox.y=12;
+			scorebox.x = 25;
+			scorebox.y = 12;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,KeyDownHandler);
 			stage.addEventListener(KeyboardEvent.KEY_UP,KeyUpHandler);
-			BulletArray=new Array;
-			EnemyArray=new Array;
+			BulletArray = new Array  ;
+			EnemyArray = new Array  ;
 			timer.start();
 		}
-		
-		public function KeyDownHandler(e:KeyboardEvent){
+
+		public function KeyDownHandler(e:KeyboardEvent)
+		{
 			trace(e.keyCode);
-			if(e.keyCode==39){
-				Right=true;
+			if (e.keyCode == 39)
+			{
+				Right = true;
 			}
-			if(e.keyCode==37){
-				Left=true;
+			if (e.keyCode == 37)
+			{
+				Left = true;
 			}
-			
+
 		}
-		
-		public function KeyUpHandler(e:KeyboardEvent){
+
+		public function KeyUpHandler(e:KeyboardEvent)
+		{
 			trace(e.keyCode);
-			if(e.keyCode==39){
-				Right=false;
+			if (e.keyCode == 39)
+			{
+				Right = false;
 			}
-			if(e.keyCode==37){
-				Left=false;
+			if (e.keyCode == 37)
+			{
+				Left = false;
 			}
-			if(e.keyCode==32){
-				Space=true;
+			if (e.keyCode == 32)
+			{
+				Space = true;
 			}
 		}
-		
-		public function Shoot(){
-			Space=false;
-			bullet=new Bullet;
+
+		public function Shoot()
+		{
+			Space = false;
+			bullet = new Bullet  ;
 			addChild(bullet);
-			bullet.x=hero.x;
-			bullet.y=hero.y;
-			bullet.dead=false;
+			bullet.x = hero.x;
+			bullet.y = hero.y;
+			bullet.dead = false;
 			BulletArray.push(bullet);
 		}
 
@@ -132,49 +140,72 @@
 
 		public function IntroduceEnemies()
 		{
-			rnd1=Math.random()*30;
-			if(rnd1==1){
-				enemy1=new Enemy1;
+			rnd1 = Math.random() * 30;
+			if (rnd1==1)
+			{
+				enemy1 = new Enemy1  ;
 				addChild(enemy1);
-				enemy1.x=Math.random()*800;
-				enemy1.y=-30;
+				enemy1.x = Math.random() * 800;
+				enemy1.y = -30;
 				EnemyArray.push(enemy1);
 			}
 		}
 		public function ProcessUserInput()
 		{
-			if(Right && hero.x<780){
-				hero.x+=5;
+			if (Right && hero.x<780)
+			{
+				hero.x +=  5;
 			}
-			if(Left && hero.x>20){
-				hero.x-=5;
+			if (Left && hero.x>20)
+			{
+				hero.x -=  5;
 			}
-			if(Space){
+			if (Space)
+			{
 				Shoot();
 			}
 		}
 		public function MoveObjects()
 		{
-			for(i=0;i<EnemyArray.length;i++){
+			for (i=0; i<EnemyArray.length; i++)
+			{
 				EnemyArray[i].action();
 			}
-			for each(var obj:Object in BulletArray){
-				obj.y-=10;
+			for each (var obj:Object in BulletArray)
+			{
+				obj.y -=  10;
 			}
 		}
 		public function CollisionDetection()
 		{
-		}
-		public function RemoveDeadObjects()
-		{
-		}
-		public function UpdateDisplay()
-		{
-		}
-		public function CheckForGameOver()
-		{
-		}
+			for(i=0;i<EnemyArray.length;i++){
+				if (EnemyArray[i].hitTestObject(hero))
+				{
+					hero.dead = true;
+				}
+				for(ii=0;ii<BulletArray.length;ii++){
+					if (EnemyArray[i].hitTestObject(BulletArray[ii]))
+					{
+						EnemyArray[i].dead = true;
+						BulletArray[ii].dead = true;
+						score +=  5;
+					}
+				}
+			}
+		
 
-	}
+	
+
+public function RemoveDeadObjects()
+{
+}
+public function UpdateDisplay()
+{
+}
+public function CheckForGameOver()
+{
+}
+
+}
 
 }
