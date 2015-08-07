@@ -73,8 +73,8 @@
 			score = 0;
 			scorebox = new ScoreBox  ;
 			addChild(scorebox);
-			scorebox.x = 25;
-			scorebox.y = 12;
+			scorebox.x = 800;
+			scorebox.y = 50;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,KeyDownHandler);
 			stage.addEventListener(KeyboardEvent.KEY_UP,KeyUpHandler);
 			BulletArray = new Array  ;
@@ -196,6 +196,21 @@
 
 		public function RemoveDeadObjects()
 		{
+			for(i=0;i<BulletArray.length;i++){
+				if(BulletArray[i].dead || BulletArray[i].y<0){
+					removeChild(BulletArray[i]);
+					BulletArray[i]=null;
+					BulletArray.splice(i,1);
+				}
+			}
+			for(i=0;i<EnemyArray.length;i++){
+				if(EnemyArray[i].dead){
+					removeChild(EnemyArray[i]);
+					EnemyArray[i]=null;
+					EnemyArray.splice(i,1);
+				}
+			}
+			
 			
 		}
 
@@ -204,6 +219,7 @@
 
 		public function UpdateDisplay()
 		{
+			scorebox.scoretext.text=  "Score:"+score.toString();
 		}
 		public function CheckForGameOver()
 		{
