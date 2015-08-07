@@ -14,13 +14,14 @@
 		//common
 		public var timer:Timer = new Timer(28);
 		public var score:int;
+		public var rnd1:int;
 
 		//assets
 		public var buttonstart:ButtonStart;
 		public var gametitle:Title;
 		public var hero:Hero;
 		public var scorebox:ScoreBox;
-		
+		public var enemy1:Enemy1;
 
 
 		//variables
@@ -29,6 +30,8 @@
 		public var Space:Boolean;
 
 		//arrays
+		public var BulletArray:Array;
+		public var EnemyArray:Array;
 
 		public function Game()
 		{
@@ -71,6 +74,9 @@
 			scorebox.y=12;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,KeyDownHandler);
 			stage.addEventListener(KeyboardEvent.KEY_UP,KeyUpHandler);
+			BulletArray=new Array;
+			EnemyArray=new Array;
+			timer.start();
 		}
 		
 		public function KeyDownHandler(e:KeyboardEvent){
@@ -113,6 +119,14 @@
 
 		public function IntroduceEnemies()
 		{
+			rnd1=Math.random()*30;
+			if(rnd1==1){
+				enemy1=new Enemy1;
+				addChild(enemy1);
+				enemy1.x=Math.random()*800;
+				enemy1.y=-30;
+				EnemyArray.push(enemy1);
+			}
 		}
 		public function ProcessUserInput()
 		{
