@@ -176,7 +176,18 @@
 		}
 		public function CollisionDetection()
 		{
-			
+			for(i=0;i<EnemyArray.length;i++){
+				if(EnemyArray[i].hitTestObject(hero)){
+					hero.dead=true;
+				}
+				for(ii=0;ii<BulletArray.length;ii++){
+					if(EnemyArray[i].hitTestObject(BulletArray[ii])){
+						EnemyArray[i].dead=true;
+						BulletArray[ii].dead=true;
+						score+=5;
+					}
+				}
+			}
 		}
 
 
