@@ -132,6 +132,15 @@
 		}
 		public function ProcessUserInput()
 		{
+			if(Right && hero.x<780){
+				hero.x+=5;
+			}
+			if(Left && hero.x>20){
+				hero.x-=5;
+			}
+			if(Space){
+				Shoot();
+			}
 		}
 		public function MoveObjects()
 		{
