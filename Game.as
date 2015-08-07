@@ -158,6 +158,9 @@
 			for(i=0;i<EnemyArray.length;i++){
 				EnemyArray[i].action();
 			}
+			for each(var obj:Object in BulletArray){
+				obj.y-=10;
+			}
 		}
 		public function CollisionDetection()
 		{
