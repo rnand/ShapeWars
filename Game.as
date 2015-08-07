@@ -193,19 +193,21 @@
 				}
 			}
 		
-
+		}
 	
 
-public function RemoveDeadObjects()
-{
-}
-public function UpdateDisplay()
-{
-}
-public function CheckForGameOver()
-{
-}
+		public function RemoveDeadObjects()
+		{
+	
+		}
 
-}
+		public function UpdateDisplay()
+		{
+		}
+		public function CheckForGameOver()
+		{
+		}
+
+	}
 
 }
