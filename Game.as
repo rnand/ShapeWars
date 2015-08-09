@@ -25,6 +25,7 @@
 		public var scorebox:ScoreBox;
 		public var enemy1:Enemy1;
 		public var bullet:Bullet;
+		public var gameovermsg:GameOver;
 
 
 		//variables
@@ -223,6 +224,36 @@
 		}
 		public function CheckForGameOver()
 		{
+			if(hero.dead){
+				timer.stop();
+				gameovermsg=new GameOver;
+				addChild(gameovermsg);
+				gameovermsg.x=400;
+				gameovermsg.y=200;
+				gameovermsg.addEventListener(MouseEvent.CLICK,gameoverfunction);
+				function gameoverfunction(eventObject:MouseEvent){
+					RemoveAllObjects();
+					StartScreen();
+				}
+			}
+		}
+		
+		public function RemoveAllObjects(){
+			for(i=0;i<BulletArray.length;i++){
+				removeChild(BulletArray[i]);
+				BulletArray[i]=null;
+			}
+			for(i=0;i<EnemyArray.length;i++){
+				removeChild(EnemyArray[i]);
+				EnemyArray[i]=null;
+			}
+			BulletArray = [];
+    		EnemyArray = [];
+    		removeChild(hero);
+    		removeChild(gameovermsg);
+    		removeChild(scorebox);
+    		stage.removeEventListener(KeyboardEvent.KEY_DOWN, KeyDownHandler);
+    		stage.removeEventListener(KeyboardEvent.KEY_UP, KeyUpHandler);
 		}
 
 	}
