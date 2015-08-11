@@ -26,6 +26,7 @@
 		public var enemy1:Enemy1;
 		public var bullet:Bullet;
 		public var gameovermsg:GameOver;
+		public var instructions:Instructions;
 
 
 		//variables
@@ -49,6 +50,10 @@
 			addChild(gametitle);
 			gametitle.x = 400;
 			gametitle.y = 100;
+			instructions = new Instructions;
+			addChild(instructions);
+			instructions.x=400;
+			instructions.y=550;
 			buttonstart = new ButtonStart  ;
 			addChild(buttonstart);
 			buttonstart.x = 407;
@@ -58,6 +63,7 @@
 			{
 				removeChild(buttonstart);
 				removeChild(gametitle);
+				removeChild(instructions);
 				SetUp();
 			}
 
