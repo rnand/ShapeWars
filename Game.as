@@ -263,6 +263,7 @@
     		removeChild(hero);
     		removeChild(gameovermsg);
     		removeChild(scorebox);
+			removeChild(explosion);
     		stage.removeEventListener(KeyboardEvent.KEY_DOWN, KeyDownHandler);
     		stage.removeEventListener(KeyboardEvent.KEY_UP, KeyUpHandler);
 		}
