@@ -27,6 +27,7 @@
 		public var bullet:Bullet;
 		public var gameovermsg:GameOver;
 		public var instructions:Instructions;
+		public var explosion:Explosion;
 
 
 		//variables
@@ -186,6 +187,10 @@
 			for(i=0;i<EnemyArray.length;i++){
 				if(EnemyArray[i].hitTestObject(hero)){
 					hero.dead=true;
+					explosion = new Explosion;
+					addChild(explosion);
+					explosion.x=hero.x;
+					explosion.y=hero.y;
 				}
 				for(ii=0;ii<BulletArray.length;ii++){
 					if(EnemyArray[i].hitTestObject(BulletArray[ii])){
