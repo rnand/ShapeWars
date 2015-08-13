@@ -81,7 +81,7 @@
 			score = 0;
 			scorebox = new ScoreBox  ;
 			addChild(scorebox);
-			scorebox.x = 800;
+			scorebox.x = 780;
 			scorebox.y = 50;
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,KeyDownHandler);
 			stage.addEventListener(KeyboardEvent.KEY_UP,KeyUpHandler);
